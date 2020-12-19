@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item m-auto">
-                    <a class="nav-link active" href="/home">HOME</a>
+                    <a class="nav-link" href="/home">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/banks">BANKS</a>
@@ -31,16 +31,17 @@
                     <a class="nav-link" href="/atms">ATMS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">LOGIN</a>
+                    <a class="nav-link active" href="/login">LOGIN</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading">BANKS & ATMS NEAR YOU</h1>
-    </div>
+<section class="login-button">
+    <form method="post" action="/login">
+        <input name="username" type="text">
+        <input type="submit">
+    </form>
 </section>
 <!-- Footer -->
 <footer class="text-black-50">
