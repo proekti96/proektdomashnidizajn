@@ -1,0 +1,162 @@
+<!--Ова е изработено од моја страна во ArcGis софтверот, мапирав објекти на мапа од база, па потоа се прикажани на WEB-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>ProCredit Map</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
+<link rel="stylesheet" href="https://js.arcgis.com/3.18/dijit/themes/claro/claro.css">
+    <style>
+   html, body {
+      height: 97%;
+      width: 98%;
+      margin: 1%;
+    }
+    #rightPane {
+      width: 20%;
+    }
+    #legendPane {
+      border: solid #97DCF2 1px;
+    }
+#search {
+        display: block;
+        position: absolute;
+        z-index: 3;
+        top: 20px;
+        left: 75px;
+      }
+  #spotlight {
+        z-index:-1;
+        position:absolute;
+        left:50%;
+        top:50%;
+        border-radius:50%;
+        opacity:0;
+        box-shadow:
+        inset rgba(0,0,0,0.25) 0px 0px 20px 20px,
+        rgba(0,0,0,0.25) 0px 0px 0px 1000px;
+        transition:all 1000ms;
+        -moz-transition:all 1000ms;
+        -webkit-transition:all 1000ms;
+      }
+      .spotlight-active {
+        z-index:2;
+        opacity:1;
+}
+    </style>
+    <script src="https://js.arcgis.com/3.18/"></script>
+<script>
+      var map;
+      require(["esri/map", "esri/layers/ArcGISDynamicMapServiceLayer","esri/layers/FeatureLayer", "esri/dijit/Legend",
+      "dojo/_base/array", "dojo/parser",
+      "dijit/layout/BorderContainer", "dijit/layout/ContentPane", "esri/dijit/Search",
+      "dijit/layout/AccordionContainer",
+        "dojo/domReady!"], function(Map, ArcGISDynamicMapServiceLayer,FeatureLayer, Legend,
+      arrayUtils, parser,Search) {
+  parser.parse();
+        map = new Map("map", {
+          basemap: "topo",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
+          center: [21.68, 41.72], // longitude, latitude
+          zoom: 10
+        });
+
+var feautureLayer= new FeatureLayer("http://app.gdi.mk/arcgis/rest/services/Studenti/Bankomati_Ekspozituri/MapServer", {
+        mode: FeatureLayer.MODE_ONDEMAND,
+        outFields: ["*"]
+      });
+  var service = new ArcGISDynamicMapServiceLayer("http://app.gdi.mk/arcgis/rest/services/Studenti/Bankomati_Ekspozituri/MapServer");
+   map.on("layers-add-result", function (evt) {
+        var layerInfo = arrayUtils.map(evt.layers, function (layer, index) {
+          return {layer:layer.layer, title:layer.layer.name};
+        });
+        if (layerInfo.length > 0) {
+          var legendDijit = new Legend({
+            map: map,
+            layerInfos: layerInfo
+          }, "legendDiv");
+          legendDijit.startup();
+        }
+      });
+  map.addLayers([service,feautureLayer]);
+   var search = new Search({
+            map: map,
+            sources: [],
+            zoomScale: 5000000
+         }, "search");
+
+         view.ui.add(search, {
+         position: "top-left",
+        index: 2
+        });
+         search.on("load", function () {
+
+            var sources = search.sources;
+            sources.push({
+               featureLayer: feautureLayer,
+               placeholder: "Macedonia",
+               enableLabel: false,
+               searchFields: ["Church"],
+               displayField: "Country",
+               exactMatch: false,
+               outFields: ["*"],
+
+
+            });
+            //Set the sources above to the search widget
+            search.set("sources", sources);
+         });
+         search.startup();
+  });  
+    </script>
+  </head>
+
+  <body class="claro">
+  <div id="content"
+     data-dojo-type="dijit/layout/BorderContainer"
+     data-dojo-props="design:'headline', gutters:true"
+     style="width: 100%; height: 100%; margin: 0;">
+
+  <div id="rightPane"
+       data-dojo-type="dijit/layout/ContentPane"
+       data-dojo-props="region:'right'">
+
+    <div data-dojo-type="dijit/layout/AccordionContainer">
+      <div data-dojo-type="dijit/layout/ContentPane" id="legendPane"
+           data-dojo-props="title:'Легенда: Симболи за експозитури и банкомати', selected:true">
+        <div id="legendDiv"></div>
+      </div>
+      <div data-dojo-type="dijit/layout/ContentPane"
+           data-dojo-props="title:'Врати се назад'" id="panel">
+        <li class="nav-item m-auto">
+          <a class="nav-link" href="/home">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/ProCredit">MAP</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/banks">BANKS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/atms">ATMS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/all">ALL</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">LOGIN</a>
+        </li>
+        <li class="row1">
+          <a class="footer-link" href="/contact">CONTACT US</a>
+        </li>
+      </div> 
+    </div>
+  </div>
+  <div id="search"></div>
+    <div id="map" data-dojo-type="dijit/layout/ContentPane"
+       data-dojo-props="region:'center'"
+       style="overflow:hidden;">
+</div>
+  </div>
+  </body>
+</html>

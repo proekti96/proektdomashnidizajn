@@ -11,10 +11,12 @@ Znachi desen klik na folderot i odbirate Open Folder as IntelliJ IDEA PROJECT;
 4. Otvarate na browser (najdobro na Google Chrome) : 
 http://localhost:8080/
 http://localhost:8080/home
+http://localhost:8080/ProCredit
 http://localhost:8080/banks
 http://localhost:8080/atms
 http://localhost:8080/login
 http://localhost:8080/all
+http://localhost:8080/contact
 
 5. Za bazite koristam XAMPP, pa MySQL, vo kodot gi gledate podatocite za bazata, kako user i pass i ime na bazata, potoa vo XAMPP kje otvorite vo delot Admin i vi se otvara stranicata http://localhost/phpmyadmin/
 pa vo nea odite na new i kreirate baza so isto ime, na toj nachin koga kje ja pushtite aplikacijata vo IntelliJ avtomatski kodot go povrzuvate so bazata. Isto vo IntelliJ desno vo Database delot treba refresh da napravite;
