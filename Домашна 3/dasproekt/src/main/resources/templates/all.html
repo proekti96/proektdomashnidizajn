@@ -41,41 +41,8 @@
     </div>
 </nav>
 <section class="jumbotron text-center">
-    <h1 class="jumbotron-heading">FILTER</h1>
-    <div th:if="${param.error}">
-        <h2 class="text-center text-danger" ></h2>
-    </div>
-    <div class="container">
-        <div class="container mb-4">
-            <div class="row">
-                <div class="col-12" >
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr >
-                                <td ></td>
-                                <td ></td>
-                                <td> <a class="btn btn-info btn-sm" >
-                                    <b class="fa fa-trash">See Adress</b>
-                                </a>
-                                </td>
-                                <td> <form >
-                                    <button type="submit" class="btn btn-danger btn-sm">See Closing Time</button>
-                                </form>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+    <h1 class="jumbotron-heading">СИТЕ ЛОКАЦИИ</h1>
+
                 <div class="col mb-2">
                     <div class="row">
                         <div class="col-sm-12  col-md-12">
@@ -83,6 +50,47 @@
                         </div>
                     </div>
                 </div>
+
+    <div class="container">
+        <div class="container mb-4">
+            <div class="row">
+
+        <div class="col-12" th:if="${siteLokacii.size() > 0}">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Име</th>
+                        <th scope="col">Адреса</th>
+                        <th scope="col">Работно Време</th>
+                        <th scope="col">Контакт</th>
+                        <th scope="col">Град</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                <tr th:each="lokacija : ${siteLokacii}">
+
+                        <td th:text="${lokacija.getName()}"></td>
+                        <td th:text="${lokacija.getAddress()}"></td>
+                        <td th:text="${lokacija.getWorktime()}"></td>
+                        <td th:text="${lokacija.getContact()}"></td>
+                        <td th:text="${lokacija.getGrad() != null} ?
+                                ${lokacija.getGrad().getName()} :
+                                'Непозната Локација'"></td>
+                        <td>
+                            <a class="btn btn-info btn-sm">
+                                <b class="fa fa-trash">Смени Податоци</b>
+                            </a>
+                        </td>
+
+               </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
             </div>
         </div>
     </div>

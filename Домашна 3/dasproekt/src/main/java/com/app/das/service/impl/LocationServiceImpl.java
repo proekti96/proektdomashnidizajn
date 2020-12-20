@@ -32,6 +32,7 @@ public class LocationServiceImpl implements LocationService {
     public List<Location> findAllByGradId(Long gradId) {
         return null;
     }
+
 //    @Override
 //    public Location save(Location location, MultipartFile image) throws IOException {
 //        return null;
