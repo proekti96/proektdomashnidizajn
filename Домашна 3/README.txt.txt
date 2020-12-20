@@ -17,6 +17,7 @@ http://localhost:8080/atms
 http://localhost:8080/login
 http://localhost:8080/all
 http://localhost:8080/contact
+http://localhost:8080/register
 
 5. Za bazite koristam XAMPP, pa MySQL, vo kodot gi gledate podatocite za bazata, kako user i pass i ime na bazata, potoa vo XAMPP kje otvorite vo delot Admin i vi se otvara stranicata http://localhost/phpmyadmin/
 pa vo nea odite na new i kreirate baza so isto ime, na toj nachin koga kje ja pushtite aplikacijata vo IntelliJ avtomatski kodot go povrzuvate so bazata. Isto vo IntelliJ desno vo Database delot treba refresh da napravite;
