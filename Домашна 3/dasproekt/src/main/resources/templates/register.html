@@ -52,27 +52,33 @@
         </div>
     </div>
 </nav>
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
 <div class="container" >
     <h1 th:if="${param.error}" th:text="${param.error}"></h1>
 </div>
 <div class="container">
     <form class="form-signin" method="post" action="/signup">
-        <h2 class="form-signin-heading">Регистрација (Registration):</h2>
+        <h2 class="form-signin-heading">Регистрација:</h2>
         <p>
             <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Корисничко име (Username)" required="" autofocus="">
+            <input type="text" id="username" name="username" class="form-control" placeholder="Корисничко име" required="" autofocus="">
         </p>
         <p>
             <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Лозинка (Password)" required="">
+            <input type="password" id="password" name="password" class="form-control" placeholder="Лозинка" required="">
         </p>
         <p>
             <label for="repeatedPassword" class="sr-only">Repeat Password</label>
-            <input type="password" id="repeatedPassword" name="repeatedPassword" class="form-control" placeholder="Повторно иста Лозинка (Repeat Password)" required="">
+            <input type="password" id="repeatedPassword" name="repeatedPassword" class="form-control" placeholder="Повторно иста Лозинка" required="">
         </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">РЕГИСТРИРАЈ СЕ (REGISTER)</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">РЕГИСТРИРАЈ СЕ</button>
     </form>
-    <a href="/login" class="btn btn-block btn-light">Веќе имате профил (Already have an account)? НАЈАВИ СЕ ТУКА (LOG IN HERE)!</a>
+    <a href="/login" class="btn btn-block btn-light">Веќе имате профил? НАЈАВЕТЕ СЕ ТУКА!</a>
 </div>
 <!-- Footer -->
 <footer class="text-black-50">

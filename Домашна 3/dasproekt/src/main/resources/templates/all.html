@@ -43,21 +43,18 @@
         </div>
     </div>
 </nav>
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <section class="jumbotron text-center">
-    <h1 class="jumbotron-heading">СИТЕ ЛОКАЦИИ</h1>
-
-                <div class="col mb-2">
-                    <div class="row">
-                        <div class="col-sm-12  col-md-12">
-                            <a href="/results" class="btn btn-block btn-dark">Search</a>
-                        </div>
-                    </div>
-                </div>
-
+    <h1 class="jumbotron-heading">СИТЕ ЛОКАЦИИ:</h1>
     <div class="container">
         <div class="container mb-4">
             <div class="row">
-
         <div class="col-12" th:if="${siteLokacii.size() > 0}">
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -73,7 +70,6 @@
                     </thead>
                     <tbody>
                 <tr th:each="lokacija : ${siteLokacii}">
-
                         <td th:text="${lokacija.getName()}"></td>
                         <td th:text="${lokacija.getAddress()}"></td>
                         <td th:text="${lokacija.getWorktime()}"></td>
@@ -81,19 +77,11 @@
                         <td th:text="${lokacija.getGrad() != null} ?
                                 ${lokacija.getGrad().getName()} :
                                 'Непозната Локација'"></td>
-                        <td>
-                            <a class="btn btn-info btn-sm">
-                                <b class="fa fa-trash">Смени Податоци</b>
-                            </a>
-                        </td>
-
                </tr>
-
                     </tbody>
                 </table>
             </div>
         </div>
-
             </div>
         </div>
     </div>

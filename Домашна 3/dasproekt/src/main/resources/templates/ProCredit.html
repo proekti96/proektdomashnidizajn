@@ -60,7 +60,6 @@
           center: [21.68, 41.72], // longitude, latitude
           zoom: 10
         });
-
 var feautureLayer= new FeatureLayer("http://app.gdi.mk/arcgis/rest/services/Studenti/Bankomati_Ekspozituri/MapServer", {
         mode: FeatureLayer.MODE_ONDEMAND,
         outFields: ["*"]
@@ -84,13 +83,11 @@ var feautureLayer= new FeatureLayer("http://app.gdi.mk/arcgis/rest/services/Stud
             sources: [],
             zoomScale: 5000000
          }, "search");
-
          view.ui.add(search, {
          position: "top-left",
         index: 2
         });
          search.on("load", function () {
-
             var sources = search.sources;
             sources.push({
                featureLayer: feautureLayer,
@@ -100,8 +97,6 @@ var feautureLayer= new FeatureLayer("http://app.gdi.mk/arcgis/rest/services/Stud
                displayField: "Country",
                exactMatch: false,
                outFields: ["*"],
-
-
             });
             //Set the sources above to the search widget
             search.set("sources", sources);
@@ -110,17 +105,20 @@ var feautureLayer= new FeatureLayer("http://app.gdi.mk/arcgis/rest/services/Stud
   });  
     </script>
   </head>
-
   <body class="claro">
+  <div id="google_translate_element"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+  </script>
   <div id="content"
      data-dojo-type="dijit/layout/BorderContainer"
      data-dojo-props="design:'headline', gutters:true"
      style="width: 100%; height: 100%; margin: 0;">
-
   <div id="rightPane"
        data-dojo-type="dijit/layout/ContentPane"
        data-dojo-props="region:'right'">
-
     <div data-dojo-type="dijit/layout/AccordionContainer">
       <div data-dojo-type="dijit/layout/ContentPane" id="legendPane"
            data-dojo-props="title:'Легенда: Симболи за експозитури и банкомати', selected:true">
@@ -149,7 +147,7 @@ var feautureLayer= new FeatureLayer("http://app.gdi.mk/arcgis/rest/services/Stud
         <li class="row1">
           <a class="footer-link" href="/contact">CONTACT US</a>
         </li>
-      </div> 
+      </div>
     </div>
   </div>
   <div id="search"></div>

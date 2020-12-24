@@ -43,67 +43,100 @@
         </div>
     </div>
 </nav>
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <section class="jumbotron text-center">
-    <h1 class="jumbotron-heading">ОДБЕРЕТЕ ГРАД</h1>
-
-
- 
+    <h1 class="jumbotron-heading">ОДБЕРЕТЕ ГРАД:</h1>
     <div class="container">
-    <div class="container mb-4">
-    <div class="row">
-        <div class="col-12" >
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                <tr >
-
-                <form>
-                    <td >
-						<select  name="grad.id" class="form-control">
-							<option
-                                th:each=" edenGrad : ${siteGradovi}"
-                                th:value="${edenGrad.getId()}"
-                                th:text="${edenGrad.getName()}">
-<!--								th:selected="@{/banks/{id}/results(id=${edenGrad.getId()})}"
-OVOJ PROBLEM DA GO SREDAM
--->
-							</option>
-						</select>
-					</td>
-                </form>
-
-                    <td> <a class="btn btn-info btn-sm"
-								 >
-                                <b class="fa fa-trash">ЕКСПОЗИТУРИ</b>
-                         </a>
-                    </td>
-
-
-                    <td> <form >
-                                <button type="submit" class="btn btn-danger btn-sm">БАНКОМАТИ</button>
-                            </form>
-                    </td>
-               </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col mb-2">
+        <div class="container mb-4">
             <div class="row">
-                <div class="col-sm-12  col-md-12">
-                    <a href="/results" class="btn btn-block btn-dark">Search</a>
+                <div class="col-12" >
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <form method="post" th:object="${edenGrad}">
+                                <tr >
+                                    <td colspan="2">
+                                        <select  class="form-control selectpicker" th:field="*{id}" >
+                                            <option
+                                                    th:each=" xGrad : ${siteGradovi}"
+                                                    th:value="${xGrad.getId()}"
+                                                    th:text="${xGrad.getName()}">
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <button type="submit"  class="btn btn-info btn-sm">
+                                        <!--                    th:action="@{/atms/{id}/results(id=${edenGrad.getId()})}">-->
+                                        <b class="fa fa-trash">ПРИКАЖИ БАНКОМАТИ И ЕКСПОЗИТУРИ</b>
+                                    </button>
+                                    </td>
+                                    <td> <button type="submit" class="btn btn-dark btn-sm">
+                                        <b class="fa fa-trash">ПРИКАЖИ ЕКСПОЗИТУРИ</b>
+                                    </button>
+                                    </td>
+                                </tr>
+                            </form>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+<section class="jumbotron text-center">
+    <h1 class="jumbotron-heading">
+        <div class="mt-5">РЕЗУЛТАТИ:
+            <!--			<strong th:text="${edenGrad.getId()}">-->
+
+            <!--			</strong>-->
+        </div>
+    </h1>
+    <div class="container">
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col-12" >
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">Име</th>
+                                <th scope="col">Адреса</th>
+                                <th scope="col">Работно Време</th>
+                                <th scope="col">Контакт</th>
+                                <th scope="col">Град</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="lokacija : ${siteLokacii}"
+                                th:if="${lokacija.getGrad().getId() == edenGrad.getId()}">
+                                <td th:text="${lokacija.getName()}"></td>
+                                <td th:text="${lokacija.getAddress()}"></td>
+                                <td th:text="${lokacija.getWorktime()}"></td>
+                                <td th:text="${lokacija.getContact()}"></td>
+                                <td th:text="${lokacija.getGrad() != null} ?
+                                ${lokacija.getGrad().getName()} :
+                                'Непозната Локација'"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <!-- Footer -->
