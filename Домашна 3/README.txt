@@ -25,4 +25,4 @@ pa vo nea odite na new i kreirate baza so isto ime, na toj nachin koga kje ja pu
 ---- Dokolku imate problemi pri startuvanje na aplikacijata slobodno kontaktirajte me na e-mail: janushevska.daniela@students.finki.ukim.mk
 
 ---------
-verzija 1.5
+verzija 1.9
