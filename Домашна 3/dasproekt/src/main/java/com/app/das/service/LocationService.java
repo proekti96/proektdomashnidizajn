@@ -10,5 +10,4 @@ public interface LocationService {
     Location save(Location location, MultipartFile image) throws IOException;
     Location update(Long id, Location location, MultipartFile image) throws IOException;
     void deleteById(Long id);
-
 }

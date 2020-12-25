@@ -50,38 +50,91 @@
     }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <section class="jumbotron text-center">
-    <h1 class="jumbotron-heading">СИТЕ ЛОКАЦИИ:</h1>
+    <h1 class="jumbotron-heading">ОДБЕРЕТЕ ГРАД:</h1>
     <div class="container">
         <div class="container mb-4">
             <div class="row">
-        <div class="col-12" th:if="${siteLokacii.size() > 0}">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">Име</th>
-                        <th scope="col">Адреса</th>
-                        <th scope="col">Работно Време</th>
-                        <th scope="col">Контакт</th>
-                        <th scope="col">Град</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                <tr th:each="lokacija : ${siteLokacii}">
-                        <td th:text="${lokacija.getName()}"></td>
-                        <td th:text="${lokacija.getAddress()}"></td>
-                        <td th:text="${lokacija.getWorktime()}"></td>
-                        <td th:text="${lokacija.getContact()}"></td>
-                        <td th:text="${lokacija.getGrad() != null} ?
-                                ${lokacija.getGrad().getName()} :
-                                'Непозната Локација'"></td>
-               </tr>
-                    </tbody>
-                </table>
+                <div class="col-12" >
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <form method="post" th:object="${edenGrad}">
+                                <tr >
+                                    <td colspan="3">
+                                        <select  class="form-control selectpicker" th:field="*{id}" >
+                                            <option
+                                                    th:each=" xGrad : ${siteGradovi}"
+                                                    th:value="${xGrad.getId()}"
+                                                    th:text="${xGrad.getName()}">
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td> <button type="submit"  class="btn btn-info btn-sm">
+                                        <!--                    th:action="@{/atms/{id}/results(id=${edenGrad.getId()})}">-->
+                                        <b class="fa fa-trash">ПРИКАЖИ БАНКОМАТИ И ЕКСПОЗИТУРИ</b>
+                                    </button>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </form>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+    <h1 class="jumbotron-heading">
+        <div class="mt-5">РЕЗУЛТАТИ:
+            <!--			<strong th:text="${edenGrad.getId()}">-->
+
+            <!--			</strong>-->
+        </div>
+    </h1>
+    <div class="container">
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col-12" >
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">Име</th>
+                                <th scope="col">Адреса</th>
+                                <th scope="col">Работно Време</th>
+                                <th scope="col">Контакт</th>
+                                <th scope="col">Град</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="lokacija : ${siteLokacii}"
+                                th:if="${lokacija.getGrad().getId() == edenGrad.getId()}">
+                                <td th:text="${lokacija.getName()}"></td>
+                                <td th:text="${lokacija.getAddress()}"></td>
+                                <td th:text="${lokacija.getWorktime()}"></td>
+                                <td th:text="${lokacija.getContact()}"></td>
+                                <td th:text="${lokacija.getGrad() != null} ?
+                                ${lokacija.getGrad().getName()} :
+                                'Непозната Локација'"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

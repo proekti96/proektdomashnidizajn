@@ -50,5 +50,4 @@ public class AtmsController {
         model.addAttribute("siteLokacii", locations);
         return "atms";
     }*/
-
 }

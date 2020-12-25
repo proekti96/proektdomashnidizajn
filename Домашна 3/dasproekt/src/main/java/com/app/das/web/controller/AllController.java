@@ -21,9 +21,25 @@ public class AllController {
         this.locationService = locationService;
         this.gradService = gradService;
     }
-    @GetMapping
+/*    @GetMapping
     public String listAllLocationsPage(Model model) {
         List<Location> locations = this.locationService.findAll();
+        model.addAttribute("siteLokacii", locations);
+        return "all";
+    }*/
+    @GetMapping
+    public String listAllLocationsPage(Model model) {
+        List<Grad> gradovi = this.gradService.findAll();
+        model.addAttribute("siteGradovi", gradovi);
+        model.addAttribute("edenGrad", new Grad());
+        return "all";
+    }
+    @PostMapping
+    public String gradAtmsPage(Grad grad,Model model) {
+        List<Grad> gradovi = this.gradService.findAll();
+        model.addAttribute("siteGradovi", gradovi);
+        model.addAttribute("edenGrad", grad);
+        List<Location> locations =  this.locationService.findAll();
         model.addAttribute("siteLokacii", locations);
         return "all";
     }

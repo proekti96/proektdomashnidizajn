@@ -62,12 +62,13 @@
                             <tr>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             <form method="post" th:object="${edenGrad}">
                                 <tr >
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <select  class="form-control selectpicker" th:field="*{id}" >
                                             <option
                                                     th:each=" xGrad : ${siteGradovi}"
@@ -78,14 +79,13 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td> <button type="submit"  class="btn btn-info btn-sm">
-                                        <!--                    th:action="@{/atms/{id}/results(id=${edenGrad.getId()})}">-->
-                                        <b class="fa fa-trash">ПРИКАЖИ БАНКОМАТИ И ЕКСПОЗИТУРИ</b>
-                                    </button>
+                                    <td>
                                     </td>
-                                    <td> <button type="submit" class="btn btn-dark btn-sm">
+                                    <td> <button type="submit" class="btn btn-info btn-sm">
                                         <b class="fa fa-trash">ПРИКАЖИ ЕКСПОЗИТУРИ</b>
                                     </button>
+                                    </td>
+                                    <td>
                                     </td>
                                 </tr>
                             </form>
@@ -96,8 +96,6 @@
             </div>
         </div>
     </div>
-</section>
-<section class="jumbotron text-center">
     <h1 class="jumbotron-heading">
         <div class="mt-5">РЕЗУЛТАТИ:
             <!--			<strong th:text="${edenGrad.getId()}">-->
@@ -122,7 +120,8 @@
                             </thead>
                             <tbody>
                             <tr th:each="lokacija : ${siteLokacii}"
-                                th:if="${lokacija.getGrad().getId() == edenGrad.getId()}">
+                                th:if="${lokacija.getGrad().getId() == edenGrad.getId()
+                                && lokacija.getTip()==0 }">
                                 <td th:text="${lokacija.getName()}"></td>
                                 <td th:text="${lokacija.getAddress()}"></td>
                                 <td th:text="${lokacija.getWorktime()}"></td>

@@ -16,15 +16,12 @@ public class Location {
     private String contact;
     private Float rating;
     private Integer tip;
-
     public Integer getTip() {
         return tip;
     }
-
     public void setTip(Integer tip) {
         this.tip = tip;
     }
-
     @Lob
     @Column(name = "image")
     private String base64Image;

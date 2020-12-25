@@ -33,8 +33,6 @@ public class LocationServiceImpl implements LocationService {
         return this.locationRepository.findAllByGradId(gradId);
 
     }
-
-
 //    @Override
 //    public Location save(Location location, MultipartFile image) throws IOException {
 //        return null;
