@@ -1,8 +1,11 @@
 Chekori za otvaranje na proekt:
 
 *Kreirate folder nekoj, primer New folder, potoa desen klik vo folderot i Git Bash Here, pa potoa ja pishuvate komandata:
-git clone https://github.com/proekti96/proektdomashnidizajn.git
-Na ovoj nachin se simnuva proektot ili drug nachin e direktno Download ZIP;
+git init
+potoa komandata:
+git pull https://github.com/proekti96/proektdomashnidizajn.git
+Dodeka drug nachin e: git clone https://github.com/proekti96/proektdomashnidizajn.git
+Na ovoj nachin se simnuva proektot ili tret nachin e direktno Download ZIP;
 
 *Dopolnitelno, za da zemete promeni dokolku ima update od moja strana vo kodot, toa go pravite so naredbata: git pull...
 
