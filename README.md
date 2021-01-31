@@ -17,3 +17,6 @@ Dopolnitelni objasnuvanja za proektot ima vo README.txt fajlot vo Domashna3 i vo
 -----------------------------------------------------------------------------------------------
 Docker i Azure:
 
+docker pull danielajdocker/dasapp:dasapp
+
+https://hub.docker.com/layers/danielajdocker/dasapp/dasapp/images/sha256-219a0e457a437eba6a09e8d954c9e8ea3b29632a8d1b515285b782713c8fc26b?context=repo
