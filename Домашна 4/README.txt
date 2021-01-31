@@ -10,3 +10,7 @@ http://app.gdi.mk/arcgis/rest/services/Studenti/Bankomati_Ekspozituri/MapServer/
 Na ovoj nachin jas kreirav moja mapa, so Ekspozituri i Bankomati oznacheni so razlichni figuri, soglasno mestoto kade se naogjaat (latitude, longitude).
 3. Docker, Azure...
 So Heroku imav problem vo prethodnata domashna, gi izvrshiv site postapki, mi ja publikuvashe aplikacijata, no ne ja loadirashe soodvetno. Zatoa vo ovaa domashna kje koristam Docker, pa Azure.
+Repo na Docker odkoga uspeshno napraviv kontejner pa image:
+docker pull danielajdocker/dasapp:dasapp
+
+https://hub.docker.com/layers/danielajdocker/dasapp/dasapp/images/sha256-219a0e457a437eba6a09e8d954c9e8ea3b29632a8d1b515285b782713c8fc26b?context=repo
