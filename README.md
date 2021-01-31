@@ -13,4 +13,7 @@ https://powerful-tundra-44471.herokuapp.com/
 https://git.heroku.com/powerful-tundra-44471.git
 
 -----------------------------------------------------------------------------------------------
-Dopolnitelni objasnuvanja za proektot ima vo README.txt fajlot vo Domashna3
+Dopolnitelni objasnuvanja za proektot ima vo README.txt fajlot vo Domashna3 i vo noviot README.txt vo Domashna4
+-----------------------------------------------------------------------------------------------
+Docker i Azure:
+
